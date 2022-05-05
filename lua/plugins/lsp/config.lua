@@ -34,42 +34,6 @@ capabilities.textDocument.completion.completionItem.resolveSupport = {
     },
 }
 
-lsp_installer.on_server_ready(function(server)
-    local opts = {
-        on_attach = on_attach,
-        flags = {
-            debounce_text_changes = 0,
-        },
-        capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities),
-    }
-
-    if server.name == "sumneko_lua" then
-        opts.settings = {
-            Lua = {
-                diagnostics = {
-                    globals = { "vim" },
-                    disable = {
-                        "lowercase-global",
-                        "undefined-global",
-                        "unused-local",
-                        "unused-function",
-                        "unused-vararg",
-                        "trailing-space",
-                    },
-                },
-            },
-        }
-    end
-
-    if server.name == "emmet_ls" then
-        opts.root_dir = function(fname)
-            return vim.loop.cwd()
-        end
-    end
-
-    server:setup(opts)
-end)
-
 -- Gutter sign icons
 for type, icon in pairs(utils.signs) do
     local hl = "DiagnosticSign" .. type
