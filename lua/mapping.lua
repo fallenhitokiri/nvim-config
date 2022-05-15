@@ -16,6 +16,8 @@ map("n", "<leader>ff", "<cmd>Telescope find_files hidden=true no_ignore=true<cr>
 map("n", "<leader>fb", "<cmd>Telescope buffers<cr>", { silent = true })
 map("n", "<leader>ft", "<cmd>Telescope tags<cr>", { silent = true })
 
+map("n", "<leader>tg", "<cmd>!ctags -R -f tags<cr><cr>", { silent = true })
+
 map("n", "<leader>tt", "<cmd>Trouble<cr>", { silent = true })
 map("n", "<leader>tq", "<cmd>Trouble quickfix<cr>", { silent = true })
 map("n", "<leader>tl", "<cmd>Trouble loclist<cr>", { silent = true })
